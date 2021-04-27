@@ -11,7 +11,6 @@ export class BoardsController extends BaseController {
       .get('', this.getAllBoards)
       .get('/:id', this.getBoardById)
       .get('/:id/lists', this.getListsByBoardId)
-      // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .post('', this.createBoard)
       .delete('/:id', this.deleteBoard)
       .put('/:id', this.editBoard)
@@ -20,7 +19,8 @@ export class BoardsController extends BaseController {
   async getAllBoards(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      const boards = await boardsService.getAllBoards(req.body.id)
+      const boards = await boardsService.getAllBoards({ creatorId: req.userInfo.id })
+      // const boards = await boardsService.getAllBoards(req.userInfo.id)
       return res.send(boards)
     } catch (error) {
       next(error)
@@ -38,7 +38,7 @@ export class BoardsController extends BaseController {
 
   async getListsByBoardId(req, res, next) {
     try {
-      const lists = await listsService.getAllLists({ board: req.params.id })
+      const lists = await listsService.getAllLists({ boardId: req.params.id })
       return res.send(lists)
     } catch (error) {
       next(error)

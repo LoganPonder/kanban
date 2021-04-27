@@ -4,6 +4,7 @@ import { BadRequest } from '../utils/Errors'
 class BoardsService {
   async getAllBoards(id = {}) {
     return await dbContext.Board.find(id)
+    // return await dbContext.Board.find({ creatorId: id })
   }
 
   async getBoardById(id) {
