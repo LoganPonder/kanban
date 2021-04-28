@@ -16,5 +16,15 @@ class TasksService {
     await api.delete(`api/tasks/${id}`)
     this.getAllTasksByListId(listId)
   }
+
+  async editTask(task, oldListId) {
+    await api.put(`api/tasks/${task.id}`, task)
+    this.getAllTasksByListId(task.listId)
+    this.getAllTasksByListId(oldListId)
+  }
+
+  setTask(task) {
+    AppState.tempTask = task
+  }
 }
 export const tasksService = new TasksService()

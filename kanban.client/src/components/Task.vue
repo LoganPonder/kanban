@@ -1,6 +1,6 @@
 <template>
   <!-- go back to here, modal -->
-  <div class="Task mb-3 task-container rounded py-2 px-2 shadow">
+  <div class="Task mb-3 task-container rounded py-2 px-2 shadow" @dragstart="setTask" draggable="true">
     <div class="task-text d-flex justify-content-between p-1">
       <h4 class="task-title ml-2">
         {{ task.title }}
@@ -46,6 +46,9 @@ export default {
     })
     return {
       state,
+      setTask() {
+        tasksService.setTask(props.task)
+      },
       async createComment() {
         try {
           state.newComment.taskId = props.task.id
@@ -77,6 +80,7 @@ export default {
   background-color: $off-white;
   color: $bg-dark;
   position: relative;
+  cursor: pointer;
 }
 
 .task-title {

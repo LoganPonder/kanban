@@ -1,5 +1,5 @@
 <template>
-  <div class="List col-md-3 my-3 ">
+  <div class="List col-md-3 my-3" dropzone="zone" @dragover.prevent @drop.prevent="moveTask">
     <div class="py-4 px-3 text-white rounded shadow list-container">
       <div class="d-flex">
         <h3 class="list-title">
@@ -8,7 +8,11 @@
         <i class="fas fa-times fa-2x delete-icon" @click="deleteList(list.id, list.boardId)"></i>
       </div>
       <div>
-        <Task v-for="task in state.tasks" :key="task.id" :task="task" />
+        <Task v-for="task in state.tasks"
+              :key="task.id"
+              :task="task"
+              draggable="true"
+        />
       </div>
       <div>
         <form @submit.prevent="createTask">
@@ -52,6 +56,12 @@ export default {
     })
     return {
       state,
+      moveTask() {
+        const task = AppState.tempTask
+        const oldListId = AppState.tempTask.listId
+        task.listId = props.list.id
+        tasksService.editTask(task, oldListId)
+      },
       async createTask() {
         try {
           state.newTask.listId = props.list.id
