@@ -105,10 +105,10 @@ export default {
 
 .delete-icon{
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 1rem;
+  right: 1rem;
   cursor:pointer;
-  color:red;
+  color:$accent;
   }
 
 </style>

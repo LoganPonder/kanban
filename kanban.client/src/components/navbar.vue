@@ -33,7 +33,9 @@
           </router-link>
         </li>
       </ul>
-      <span class="navbar-text">
+      <!-- go back to here   -->
+      <span v-if="!user.isAuthenticated"></span>
+      <span class="navbar-text" v-else>
         <button
           class="btn btn-outline-primary text-uppercase"
           @click="login"

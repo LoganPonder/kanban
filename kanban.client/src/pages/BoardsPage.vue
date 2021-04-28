@@ -3,12 +3,12 @@
     Loading...
   </div>
   <div class="home flex-grow-1 d-flex flex-column container-fluid" v-else>
-    <div class="row">
-      <div class="col d-flex flex-column">
-        <p class="align-self-md-start">
+    <div class="row board-header">
+      <div class="col d-flex welcome-text justify-content-between">
+        <p class="align-self-md-start welcome-text">
           Hello, {{ state.account.name }}
         </p>
-        <form @submit.prevent="createBoard" class="align-self-md-end">
+        <form @submit.prevent="createBoard" class="align-self-md-end newBoard-form">
           <div class="input-group">
             <input type="text"
                    name="addBoard"
@@ -17,7 +17,7 @@
                    v-model="state.newBoard.title"
             >
             <div class="input-group-append">
-              <button class="btn btn-success" type="submit">
+              <button class="btn btn-dark" type="submit">
                 Add Board
               </button>
             </div>
@@ -72,16 +72,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../assets/scss/_variables.scss';
 .home{
   text-align: center;
   user-select: none;
+  background-color: $bg-dark;
   > img{
     height: 200px;
     width: 200px;
   }
+  .welcome-text{
+    font-size:2rem;
+    color: $bg-dark;
+    text-transform: uppercase;
+  }
+
+  .board-header{
+    background-color: $white;
+    padding: 2rem ;
+  }
 }
 
-*{
-  outline:1px solid red;
-}
 </style>

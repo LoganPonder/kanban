@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade"
+  <div class="modal"
        :id="'taskModal' + task.id"
        tabindex="-1"
        role="dialog"
@@ -8,11 +8,11 @@
   >
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header ">
           <h5 class="modal-title" id="exampleModalLabel">
             {{ task.title }}
           </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -20,26 +20,13 @@
           <Comment v-for="comment in state.comments" :key="comment.id" :comment="comment" />
         </div>
         <div class="modal-footer">
-          <div class="input-group mb-3">
-            <form @submit.prevent="createComment">
-              <input type="text" class="form-control" placeholder="Add Comment..." v-model="state.newComment.title">
-            </form>
-          </div>
+          <form @submit.prevent="createComment">
+            <input type="text" class="form-control" placeholder="Add Comment..." v-model="state.newComment.title">
+          </form>
         </div>
       </div>
     </div>
   </div>
-  <!-- <div class="Task" data-toggle="modal" data-target="#exampleModal">
-    {{ task.title }}
-  </div>
-  <div>
-    <Comment v-for="comment in state.comments" :key="comment.id" :comment="comment" />
-  </div>
-  <div class="input-group mb-3">
-    <form @submit.prevent="createComment">
-      <input type="text" class="form-control" placeholder="Add Comment..." v-model="state.newComment.title">
-    </form>
-  </div> -->
 </template>
 
 <script>
@@ -58,6 +45,7 @@ export default {
   },
   setup(props) {
     const state = reactive({
+      loading: true,
       newComment: {},
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),
@@ -67,6 +55,7 @@ export default {
     onMounted(async() => {
       try {
         await commentsService.getAllCommentsByTaskId(props.task.id)
+        state.loading = false
       } catch (error) {
         Notification.toast('Error: ' + error, 'error')
       }
@@ -98,7 +87,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  *{
-  outline:1px solid red;
+@import '../assets/scss/_variables.scss';
+.modal-header, .modal-footer{
+  background-color: $bg-dark;
 }
+.modal-title{
+  font-size:3rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: $white;
+}
+
+.close-modal{
+  color: $white;
+}
+
 </style>

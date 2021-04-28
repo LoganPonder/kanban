@@ -5,7 +5,7 @@
       <h4 class="task-title ml-2">
         {{ task.title }}
       </h4>
-      <button data-toggle="modal" :data-target="'#taskModal' + task.id" class="btn btn-sm btn-dark text-white mr-3 mb-2">
+      <button data-toggle="modal" :data-target="'#taskModal' + task.id" class="btn btn-sm btn-dark text-white mr-3 mb-2 details-button">
         Details
       </button>
       <i class="fas fa-times delete-icon pb-0 align-self-start" @click="deleteTask(task.id, task.listId)"></i>
@@ -88,12 +88,16 @@ export default {
   font-weight: 300;
 }
 
+.details-button{
+  align-self:flex-start
+}
+
 .delete-icon{
   position: absolute;
   top: 5px;
   right: 5px;
   cursor:pointer;
-  color:red;
+  color:$accent-light;
   }
 
 </style>

@@ -3,8 +3,10 @@
     Loading...
   </div>
   <div class="board-details-page container-fluid" v-else>
-    <div class="row flex-column shadow">
-      <h1 class="board-title">{{ state.activeBoard.title }}</h1>
+    <div class="row shadow board-header justify-content-between align-items-end">
+      <h1 class="board-title">
+        {{ state.activeBoard.title }}
+      </h1>
       <form @submit.prevent="createList" class="newlist-form align-self-end pb-4 pr-3">
         <input type="text"
                name="addList"
@@ -18,7 +20,7 @@
         </button>
       </form>
     </div>
-    <div class="row">
+    <div class="row mt-5">
       <List v-for="list in state.lists" :key="list.id" :list="list" />
     </div>
   </div>
@@ -74,13 +76,18 @@ export default {
 .board-details-page {
   background-color: $bg-dark;
 }
+.board-header{
+  background-color: $off-white;
+  color: $off-white;
+}
 
 .board-title {
   font-family: $primary-font;
   font-size: 6rem;
-  color: $off-white;
+  color: $bg-dark;
+  text-transform: uppercase;
   margin-left: 2rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 input {
