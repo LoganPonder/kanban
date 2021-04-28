@@ -3,17 +3,17 @@
     Loading...
   </div>
   <div class="board-details-page container-fluid" v-else>
-    <div class="row flex-column">
-      <h1>{{ state.activeBoard.title }}</h1>
-      <form @submit.prevent="createList">
-        <label for="newList">Add a New List</label>
+    <div class="row flex-column shadow">
+      <h1 class="board-title">{{ state.activeBoard.title }}</h1>
+      <form @submit.prevent="createList" class="newlist-form align-self-end pb-4 pr-3">
         <input type="text"
                name="addList"
                placeholder="Title..."
                id="newList"
                v-model="state.newList.title"
+               class="p-1"
         >
-        <button type="submit" class="btn btn-success">
+        <button type="submit" class="btn btn-dark text-white">
           Add List
         </button>
       </form>
@@ -69,8 +69,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/_variables.scss';
 
-* {
-  outline:1px solid red;
+.board-details-page {
+  background-color: $bg-dark;
+}
+
+.board-title {
+  font-family: $primary-font;
+  font-size: 6rem;
+  color: $off-white;
+  margin-left: 2rem;
+  margin-top: 3rem;
+}
+
+input {
+  min-width: 30vw;
 }
 </style>

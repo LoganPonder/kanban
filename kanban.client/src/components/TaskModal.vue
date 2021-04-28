@@ -1,18 +1,45 @@
 <template>
-  <!-- go back to here, modal -->
-  <div class="Task mb-3 task-container rounded py-2 px-2 shadow">
-    <div class="task-text d-flex justify-content-between p-1">
-      <h4 class="task-title ml-2">
-        {{ task.title }}
-      </h4>
-      <button data-toggle="modal" :data-target="'#taskModal' + task.id" class="btn btn-sm btn-dark text-white mr-3 mb-2">
-        Details
-      </button>
-      <i class="fas fa-times delete-icon pb-0 align-self-start" @click="deleteTask(task.id, task.listId)"></i>
+  <div class="modal fade"
+       :id="'taskModal' + task.id"
+       tabindex="-1"
+       role="dialog"
+       aria-labelledby="exampleModalLabel"
+       aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            {{ task.title }}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <Comment v-for="comment in state.comments" :key="comment.id" :comment="comment" />
+        </div>
+        <div class="modal-footer">
+          <div class="input-group mb-3">
+            <form @submit.prevent="createComment">
+              <input type="text" class="form-control" placeholder="Add Comment..." v-model="state.newComment.title">
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- go back here -->
-    <TaskModal :task="task" />
   </div>
+  <!-- <div class="Task" data-toggle="modal" data-target="#exampleModal">
+    {{ task.title }}
+  </div>
+  <div>
+    <Comment v-for="comment in state.comments" :key="comment.id" :comment="comment" />
+  </div>
+  <div class="input-group mb-3">
+    <form @submit.prevent="createComment">
+      <input type="text" class="form-control" placeholder="Add Comment..." v-model="state.newComment.title">
+    </form>
+  </div> -->
 </template>
 
 <script>
@@ -22,7 +49,7 @@ import { tasksService } from '../services/TasksService'
 import Notification from '../utils/Notification'
 import { commentsService } from '../services/CommentsService'
 export default {
-  name: 'Task',
+  name: 'TaskModal',
   props: {
     task: {
       type: Object,
@@ -71,25 +98,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/scss/_variables.scss';
-
-.task-container {
-  background-color: $off-white;
-  color: $bg-dark;
-  position: relative;
+  *{
+  outline:1px solid red;
 }
-
-.task-title {
-  font-size: 1.7rem;
-  font-weight: 300;
-}
-
-.delete-icon{
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  cursor:pointer;
-  color:red;
-  }
-
 </style>

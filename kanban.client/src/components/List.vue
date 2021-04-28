@@ -1,16 +1,18 @@
 <template>
   <div class="List col-md-3 my-3 ">
-    <div>
+    <div class="py-4 px-3 text-white rounded shadow list-container">
       <div class="d-flex">
-        <h3>{{ list.title }}</h3>
-        <i class="fas fa-times delete-icon" @click="deleteList(list.id, list.boardId)"></i>
+        <h3 class="list-title">
+          {{ list.title }}
+        </h3>
+        <i class="fas fa-times fa-2x delete-icon" @click="deleteList(list.id, list.boardId)"></i>
       </div>
       <div>
         <Task v-for="task in state.tasks" :key="task.id" :task="task" />
       </div>
       <div>
         <form @submit.prevent="createTask">
-          <input type="text" placeholder="Add task..." v-model="state.newTask.title">
+          <input type="text" placeholder="Add task..." v-model="state.newTask.title" class="w-75 p-1 mb-2">
           <button type="submit" class="btn btn-sm btn-dark text-white">
             Add Task
           </button>
@@ -75,13 +77,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import './scss/_variables.scss'
+@import '../assets/scss/_variables.scss';
+
+.list-container {
+  position: relative;
+  background-color: $body-bg;
+}
+
+.list-title {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: $primary-font;
+  font-weight: 400;
+  color: $bg-dark
+}
+
 .delete-icon{
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
   cursor:pointer;
   color:red;
   }
 
-  *{
-  outline:1px solid red;
-}
 </style>

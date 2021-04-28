@@ -1,9 +1,12 @@
 <template>
   <div class="Comment">
-    <small>
+    <p>
       {{ comment.title }}
-      <i class="fas fa-times delete-icon" @click="deleteComment(comment.id, comment.taskId)"></i>
+    </p>
+    <small>
+      {{ comment.creator.name }}
     </small>
+    <i class="fas fa-times delete-icon" @click="deleteComment(comment.id, comment.taskId)"></i>
   </div>
 </template>
 
