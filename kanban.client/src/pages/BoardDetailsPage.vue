@@ -83,6 +83,7 @@ export default {
 
 .board-title {
   font-family: $primary-font;
+  font-weight: 300;
   font-size: 6rem;
   color: $bg-dark;
   text-transform: uppercase;
@@ -93,4 +94,21 @@ export default {
 input {
   min-width: 30vw;
 }
+
+@media (max-width: $layout-breakpoint-medium) {
+  .board-title {
+    font-size: 4rem;
+  }
+
+  input {
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: $layout-breakpoint-small) {
+  .board-title {
+    font-size: 3rem;
+  }
+}
+
 </style>

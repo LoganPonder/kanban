@@ -13,7 +13,7 @@
             {{ task.title }}
           </h5>
           <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span class="close-x" aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
@@ -98,8 +98,12 @@ export default {
   color: $white;
 }
 
+.close-x {
+  color: $accent !important;
+}
+
 .close-modal{
-  color: $white;
+  color: $accent;
 }
 
 </style>

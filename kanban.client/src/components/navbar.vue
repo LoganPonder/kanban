@@ -1,10 +1,10 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
-          src="../assets/img/cw-logo.png"
+          src="../assets/img/logo-dark.jpg"
           height="45"
         />
       </div>
@@ -44,7 +44,7 @@
           Login
         </button>
 
-        <div class="dropdown" v-else>
+        <div class="dropdown mobile-button" v-else>
           <div
             class="dropdown-toggle"
             @click="state.dropOpen = !state.dropOpen"
@@ -55,7 +55,7 @@
               height="40"
               class="rounded"
             />
-            <span class="mx-3">{{ user.name }}</span>
+            <span class="mx-3 text-white">{{ user.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -105,6 +105,12 @@ export default {
 </script>
 
 <style scoped>
+@import '../assets/scss/_variables.scss';
+
+.navbar {
+  background-color: #173447;
+}
+
 .dropdown-menu {
   user-select: none;
   display: block;
@@ -124,6 +130,14 @@ a:hover {
   text-transform: uppercase;
 }
 .nav-item .nav-link.router-link-exact-active{
-  color: var(--primary);
+  color: #fff;
+}
+
+.mobile-button {
+  color: #fff !important;
+}
+
+.mobile-button{
+  cursor: pointer;
 }
 </style>

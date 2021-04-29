@@ -1,16 +1,21 @@
 $body-bg: #f2f2f2;
 $bg-dark: #173447;
 $bg-dark-light: #173447b0;
-$accent: #00bbf9;
-$accent-light: #74dcff;
+$accent: #fb8500;
+$accent-light: #fb8500;
 $accent-dark: #009ed3;
 $white: #fff;
 $off-white: #eeeeee;
+$secondary: #fb8500;
 $danger: #8a0608;
 $success: #27AE60;
-$warning: #FF7F50;
 $info: #00C9BD;
 $dark: #202020;
 
 $primary-font: 'Poppins', sans-serif;
 $secondary-font: 'Roboto', sans-serif;
+
+
+$layout-breakpoint-large: 1200px;
+$layout-breakpoint-medium: 960px;
+$layout-breakpoint-small: 400px;

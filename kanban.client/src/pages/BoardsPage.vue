@@ -5,10 +5,10 @@
   <div class="home flex-grow-1 d-flex flex-column container-fluid" v-else>
     <div class="row board-header">
       <div class="col d-flex welcome-text justify-content-between">
-        <p class="align-self-md-start welcome-text">
-          Hello, {{ state.account.name }}
-        </p>
-        <form @submit.prevent="createBoard" class="align-self-md-end newBoard-form">
+        <h2 class="align-self-md-start welcome-texts">
+          Welcome Back, <span class="name">{{ state.account.name }}</span>
+        </h2>
+        <form @submit.prevent="createBoard" class="newBoard-form">
           <div class="input-group">
             <input type="text"
                    name="addBoard"
@@ -25,9 +25,10 @@
         </form>
       </div>
     </div>
-    <div class="d-flex flex-wrap justify-content-between row m-3">
+    <div class="d-flex flex-wrap justify-content-start row m-3 board-content flex-grow-1">
       <Board v-for="board in state.boards" :key="board.id" :board="board" />
     </div>
+    <img class="img-fluid d-xl-block d-none" src="../assets/img/setup.svg" alt="setup">
   </div>
 </template>
 
@@ -77,14 +78,34 @@ export default {
   text-align: center;
   user-select: none;
   background-color: $bg-dark;
-  > img{
-    height: 200px;
-    width: 200px;
+
+  .board-content {
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
   }
+
+   img{
+    height: 65vh;
+    position: absolute;
+    bottom: 10%;
+    right: 22%;
+    opacity: 20%;
+    z-index: 0;
+  }
+
   .welcome-text{
     font-size:2rem;
     color: $bg-dark;
     text-transform: uppercase;
+  }
+
+  h2 {
+    font-weight: 300;
+  }
+  .name {
+    font-weight: 600;
+    font-size: 3rem;
   }
 
   .board-header{
@@ -93,4 +114,37 @@ export default {
   }
 }
 
+@media (max-width: $layout-breakpoint-large) {
+  .welcome-text {
+    flex-direction: column;
+    text-align: left;
+  }
+}
+@media (max-width: $layout-breakpoint-medium) {
+  .welcome-text {
+    flex-direction: column;
+  }
+
+  form {
+    align-self: flex-start;
+  }
+
+  .welcome-texts {
+    font-size: 1.2rem !important;
+    text-align: left;
+  }
+
+  span {
+    font-size: 1.5rem !important;
+  }
+  form {
+    align-self: flex-start;
+  }
+
+  input {
+    max-width: 50% !important;
+    font-size: 1rem;
+    padding-left: .5rem;
+  }
+}
 </style>

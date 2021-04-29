@@ -59,14 +59,10 @@ font-size: 2rem;
 
   .delete-icon{
   cursor:pointer;
-  color:$danger;
+  color:$accent;
   font-size: 1.5rem;
   }
 }
-  .comment-creator{
-
-  }
-
 }
 
 </style>

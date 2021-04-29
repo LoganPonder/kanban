@@ -1,5 +1,5 @@
 <template>
-  <div class="List col-md-3 my-3" dropzone="zone" @dragover.prevent @drop.prevent="moveTask">
+  <div class="List col-md-4 my-3" dropzone="zone" @dragover.prevent @drop.prevent="moveTask">
     <div class="py-4 px-3 text-white rounded shadow list-container">
       <div class="d-flex">
         <h3 class="list-title">
@@ -15,9 +15,9 @@
         />
       </div>
       <div>
-        <form @submit.prevent="createTask">
-          <input type="text" placeholder="Add task..." v-model="state.newTask.title" class="w-75 p-1 mb-2">
-          <button type="submit" class="btn btn-sm btn-dark text-white">
+        <form @submit.prevent="createTask" class="input-group">
+          <input type="text" placeholder="Add task..." v-model="state.newTask.title" class="w-75 form-control">
+          <button type="submit" class="btn btn-sm btn-dark text-white input-group-prepend">
             Add Task
           </button>
         </form>
@@ -61,6 +61,7 @@ export default {
         const oldListId = AppState.tempTask.listId
         task.listId = props.list.id
         tasksService.editTask(task, oldListId)
+        Notification.toast('Task Moved', 'success')
       },
       async createTask() {
         try {
