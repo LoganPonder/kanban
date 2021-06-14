@@ -70,7 +70,7 @@
         <div class="info-text-container">
           <ul>
             <li class="d-flex align-items-center mb-4">
-              <i class="fas fa-chevron-circle-right"></i> <p>Help keep your team stay organized</p>
+              <i class="fas fa-chevron-circle-right"></i> <p>Help your team stay organized</p>
             </li>
             <li class="d-flex align-items-center mb-4">
               <i class="fas fa-chevron-circle-right"></i> <p>Collaborate on tasks</p>

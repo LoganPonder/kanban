@@ -48,7 +48,7 @@ export class CommentsController extends BaseController {
   async deleteComment(req, res, next) {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
-      const data = await commentsService.deleteComment(req.params.id)
+      const data = await commentsService.deleteComment(req.params.id, req.userInfo.id)
       return res.send(data)
     } catch (error) {
       next(error)

@@ -16,8 +16,8 @@ class ListsService {
     return await dbContext.List.create(body)
   }
 
-  async deleteList(id) {
-    const data = await dbContext.List.findOneAndDelete({ _id: id })
+  async deleteList(id, userId) {
+    const data = await dbContext.List.findOneAndDelete({ _id: id, creatorId: userId })
     if (!data) throw new BadRequest('Invalid Id')
     return 'Successfully Deleted'
   }

@@ -48,7 +48,8 @@ export class ListsController extends BaseController {
   async deleteList(req, res, next) {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
-      const data = await listsService.deleteList(req.params.id)
+      req.body.creatorId = req.userInfo.id
+      const data = await listsService.deleteList(req.params.id, req.userInfo.id)
       return res.send(data)
     } catch (error) {
       next(error)

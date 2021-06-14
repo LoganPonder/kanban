@@ -48,7 +48,7 @@ export class TasksController extends BaseController {
   async deleteTask(req, res, next) {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
-      const data = await tasksService.deleteTask(req.params.id)
+      const data = await tasksService.deleteTask(req.params.id, req.userInfo.id)
       return res.send(data)
     } catch (error) {
       next(error)
