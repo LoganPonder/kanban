@@ -203,7 +203,7 @@ button {
   p {
     font-size: 1.6rem;
     color: $bg-dark;
-    margin-left: 1rem;
+    margin-left: .2rem;
     margin-top: .8rem;
 
     span {
