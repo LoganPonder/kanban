@@ -104,11 +104,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 @import '../assets/scss/_variables.scss';
+@import "../assets/scss/main.scss";
 
 .navbar {
-  background-color: #173447 !important;
+  background-color: $bg-dark;
 }
 
 .dropdown-menu {
