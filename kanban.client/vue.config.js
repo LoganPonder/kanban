@@ -1,6 +1,6 @@
 module.exports = {
   // NOTE to host on github publicPath: '/YOUR-GITHUB-REPOSITORY-NAME/',
-  publicPath: '/kanban/',
+  publicPath: '/',
   outputDir: '../kanban.server/client',
   productionSourceMap: false
 }
