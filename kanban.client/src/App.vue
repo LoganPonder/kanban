@@ -26,7 +26,7 @@ export default {
 
 </script>
 <style lang="scss">
-@import "./assets/scss/main.scss";
+@import "/./assets/scss/main.scss";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,800;1,200&family=Roboto&display=swap');
 
 footer {
