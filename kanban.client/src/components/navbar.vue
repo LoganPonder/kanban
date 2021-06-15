@@ -108,7 +108,7 @@ export default {
 @import '../assets/scss/_variables.scss';
 
 .navbar {
-  background-color: #173447;
+  background-color: #173447 !important;
 }
 
 .dropdown-menu {
